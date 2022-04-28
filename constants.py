@@ -1,3 +1,8 @@
+class Dot:
+    COLOR = 'black'
+    SIZE = 3
+
+
 class Window:  # As the root's dimensions.
     X_MIN = 0
     X_MAX = 750
