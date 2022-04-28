@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)  # To be hashable but immutable.
 class Point:
     x: float
     y: float
