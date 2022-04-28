@@ -17,6 +17,6 @@ class Line:
     dst: Point = Point(0, 0)
 
     def __str__(self):
-        print('src = ({}, {}), dst = ({}, {})'.format(
+        print('({}, {}) - ({}, {})'.format(
             self.src.x, self.src.y, self.dst.x, self.dst.y
         ))
