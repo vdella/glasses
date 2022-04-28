@@ -16,4 +16,4 @@ class Viewport:  # As the root's Canvas dimensions.
     X_MAX = Window.X_MAX / 2
 
     Y_MIN = 0
-    Y_MAX = Window.Y_MAX / 2
+    Y_MAX = Window.Y_MAX
