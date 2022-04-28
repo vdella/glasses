@@ -8,8 +8,3 @@ class PointHolder:
 
     def pop(self):
         return self.points.pop()
-
-    def stringfy(self):
-        string = list()
-        for point in self.points:
-            string.append(str(point))
