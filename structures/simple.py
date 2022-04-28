@@ -1,20 +1,22 @@
-class Point:
+from dataclasses import dataclass
 
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+
+@dataclass
+class Point:
+    x: float
+    y: float
+    z: float = 0
 
     def __str__(self):
         return '({}, {})'.format(self.x, self.y)
 
 
+@dataclass
 class Line:
-
-    def __init__(self, src_point, dst_point):
-        self.pointA = src_point
-        self.pointB = dst_point
+    src: Point
+    dst: Point = Point(0, 0)
 
     def __str__(self):
         print('src = ({}, {}), dst = ({}, {})'.format(
-            self.pointA.x, self.pointA.y, self.pointB.x, self.pointB.y
+            self.src.x, self.src.y, self.dst.x, self.dst.y
         ))
