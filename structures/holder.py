@@ -1,7 +1,9 @@
-class PointHolder:
+from dataclasses import dataclass
 
-    def __init__(self):
-        self.points = set()
+
+@dataclass
+class PointHolder:
+    points = set()
 
     def push(self, point):
         return self.points.add(point)
