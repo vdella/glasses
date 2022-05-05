@@ -17,15 +17,8 @@ class Application:
         self.canvas_frame = CanvasFrame(self.right_side_frame.frame, self.width, self.height)
 
         self.left_side_frame = SideFrame(self.root, LEFT, self.width, self.height)
-        self.text_frame = TextFrame(self.left_side_frame.frame, self.canvas_frame.canvas)
+        self.text_frame = TextFrame(self.left_side_frame.frame, self.canvas_frame.canvas, None)
         self.object_frame = CreatedObjectsFrame(self.left_side_frame.frame)
+        self.text_frame.created_objs_frame = self.object_frame
 
         self.root.mainloop()
-
-    @staticmethod
-    def screen_width():
-        return Application.width
-
-    @staticmethod
-    def screen_height():
-        return Application.height
