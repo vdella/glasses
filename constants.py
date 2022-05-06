@@ -6,8 +6,8 @@ class Window:
     X_MAX, Y_MAX = pyautogui.size()
 
 
-class Viewport:
+class Canvas:
     X_MIN = 0
-    X_MAX = Window.X_MAX
+    X_MAX = Window.X_MAX / 2
     Y_MIN = 0
     Y_MAX = Window.Y_MAX / 2
