@@ -4,6 +4,7 @@ from ui.text_frame import TextFrame
 from ui.created_objects_frame import CreatedObjectsFrame
 from ui.side_frame import SideFrame
 from ui.root_window import root
+from ui.paint_interface import viewport_x, viewport_y
 
 
 class Application:
@@ -14,9 +15,14 @@ class Application:
         self.root = root
 
         self.right_side_frame = SideFrame(self.root, RIGHT, self.width, self.height)
-        self.canvas_frame = CanvasFrame(self.right_side_frame.frame, self.width, self.height)
+        self.canvas_frame = CanvasFrame(self.right_side_frame.frame)
+        self.canvas_frame.canvas['width'] = self.width / 2
+        self.canvas_frame.canvas['height'] = self.height
 
-        self.left_side_frame = SideFrame(self.root, LEFT, self.width, self.height)
+        viewport_x(self.canvas_frame.canvas)
+        viewport_y(self.canvas_frame.canvas)
+
+        self.left_side_frame = SideFrame(self.root, LEFT, self.width / 2, self.height / 2)
         self.text_frame = TextFrame(self.left_side_frame.frame, self.canvas_frame.canvas, None)
         self.object_frame = CreatedObjectsFrame(self.left_side_frame.frame)
         self.text_frame.created_objs_frame = self.object_frame
