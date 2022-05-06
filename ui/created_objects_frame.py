@@ -20,6 +20,14 @@ class CreatedObjectsFrame:
         self.text.delete('1.0', tk.END)
 
         for p in point_cache:
-            self.text.insert(tk.INSERT, '{}\n'.format(p))
+            coordinate_str: str = str(p)
+            if len(p) == 2:
+                structure = 'Line'
+            elif len(p) > 2:
+                structure = 'Polygon'
+            else:
+                coordinate_str = str(p).replace(',)', ')')
+                structure = 'Point'
+            self.text.insert(tk.INSERT, '{} : {}\n'.format(structure, coordinate_str))
 
         self.text['state'] = tk.DISABLED
