@@ -21,9 +21,6 @@ class Parser:
             if operation == 'add':
                 _add(operands)
                 return edges
-            elif operation == 'rm' or operation == 'remove':
-                _remove(operands)
-                return edges
             else:
                 ErrorBox()
                 return {}
