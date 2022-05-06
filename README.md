@@ -12,7 +12,7 @@ There are 3 major components in 'glasses':
     * Text side panel (top left); and
     * Created objects side panel (bottom left).
 
-Everytime component is desired to be presented,
+Every time a component is desired to be presented,
 the user must tell which are its coordinates.
 With a single coordinate, a point will be shown;
 with 2, a line, and, with even more, a polygon.
