@@ -3,7 +3,7 @@ from constants import Window, Canvas
 
 def viewport_transformation(point: tuple):
     # Keeps the X-axis...
-    x, y = point[0], point[1]
+    x, y = point
 
     x_viewport = ((x - Window.X_MIN) / (Window.X_MAX - Window.X_MIN)) * (Canvas.X_MAX - Canvas.X_MIN)
 
