@@ -1,16 +1,17 @@
-from structures.globals import point_cache
-from ui.error_presentation import ErrorBox
+from parsing.cache_interface import module_functions
 
 
 class Parser:
 
     cache = list()
 
-    def parse(self) -> dict:
-        """Reads user input. 'add' being the operation, generates a polygon
-        graph from the desired coordinates. If not, removes the said
-        coordinates from cache."""
+    def parse(self) -> list:
+        """Digests user input and draws a graph according
+        to given coordinates."""
+
         self.digest_entry()
+
+        results = list()
 
         for line in self.cache:
             operation = line[0]
@@ -18,12 +19,9 @@ class Parser:
 
             edges: dict = graph_from(operands)
 
-            if operation == 'add':
-                _add(operands)
-                return edges
-            else:
-                ErrorBox()
-                return {}
+            module_functions[operation](operands)
+            results.append(edges)
+        return results
 
     def digest_entry(self):
         """Digests a line of user input into
@@ -63,11 +61,3 @@ def graph_from(points: tuple):
         graph[points[i]] = points[i + 1]
 
     return graph
-
-
-def _add(point):
-    point_cache.add(point)
-
-
-def _remove(point):
-    point_cache.remove(point)
