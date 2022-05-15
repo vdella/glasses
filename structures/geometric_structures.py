@@ -1,7 +1,5 @@
-from dataclasses import dataclass
-
-
-@dataclass
 class Structure:
-    points = set()
-    label: str = ''
+
+    def __init__(self, points, label=''):
+        self.points = points
+        self.label = label

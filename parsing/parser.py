@@ -1,4 +1,5 @@
 from parsing.cache_interface import module_functions
+from structures.geometric_structures import Structure
 
 
 class Parser:
@@ -17,9 +18,9 @@ class Parser:
             operation = line[0]
             operands: tuple = tuple([_format(x) for x in line[1:]])
 
-            edges: dict = graph_from(operands)
+            module_functions[operation](Structure(operands))
 
-            module_functions[operation](operands)
+            edges: dict = graph_from(operands)
             results.append(edges)
         return results
 

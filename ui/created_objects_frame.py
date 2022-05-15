@@ -20,13 +20,14 @@ class CreatedObjectsFrame:
         self.text.delete('1.0', tk.END)
 
         for p in structure_cache:
-            coordinate_str: str = str(p)
-            if len(p) == 2:
+            points = p.points
+            coordinate_str: str = str(points)
+            if len(points) == 2:
                 structure = 'Line'
-            elif len(p) > 2:
+            elif len(points) > 2:
                 structure = 'Polygon'
             else:
-                coordinate_str = str(p).replace(',)', ')')
+                coordinate_str = str(points).replace(',)', ')')
                 structure = 'Point'
             self.text.insert(tk.INSERT, '{} : {}\n'.format(structure, coordinate_str))
 
