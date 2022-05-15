@@ -1,3 +1,1 @@
-Point = tuple
-
-point_cache = set()
+structure_cache = set()
