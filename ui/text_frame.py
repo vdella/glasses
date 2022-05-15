@@ -19,7 +19,10 @@ class TextFrame:
         the parsing module and deletes what was written in the text box."""
         parser = Parser()
         parser.cache = self.frame.get('1.0', 'end-1c').split('\n')
-        edges = parser.parse()
-        paint_graph(edges, self.canvas)
+        graphs = parser.parse()
+
+        for graph in graphs:
+            paint_graph(graph, self.canvas)
+
         self.created_objs_frame.show_coordinates()
         self.frame.delete('1.0', 'end-1c')
