@@ -1,5 +1,5 @@
 import tkinter as tk
-from structures.globals import point_cache
+from structures.globals import structure_cache
 
 
 class CreatedObjectsFrame:
@@ -19,7 +19,7 @@ class CreatedObjectsFrame:
 
         self.text.delete('1.0', tk.END)
 
-        for p in point_cache:
+        for p in structure_cache:
             coordinate_str: str = str(p)
             if len(p) == 2:
                 structure = 'Line'
