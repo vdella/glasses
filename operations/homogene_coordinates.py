@@ -9,7 +9,7 @@ def _scale_factor(point2d: tuple):
     return point2d[0], point2d[1], 1
 
 
-def translate(point2d: tuple, distance: tuple):
+def translate2d(point2d: tuple, distance: tuple):
     scaled_point = _scale_factor(point2d)
     dx, dy = distance
     return dot(scaled_point, [[1, 0, 0],
@@ -17,7 +17,7 @@ def translate(point2d: tuple, distance: tuple):
                               [dx, dy, 1]])
 
 
-def scale(point2d: tuple, delta: tuple):
+def scale2d(point2d: tuple, delta: tuple):
     scaled_point = _scale_factor(point2d)
     sx, sy = delta
     return dot(scaled_point, [[sx, 0, 0],
@@ -25,7 +25,7 @@ def scale(point2d: tuple, delta: tuple):
                               [0, 0, 1]])
 
 
-def rotate(point2d, angle):
+def rotate2d(point2d, angle):
     scaled_point = _scale_factor(point2d)
     return dot(scaled_point, [[cos(angle), - sin(angle), 0],
                               [sin(angle), cos(angle), 0],
@@ -43,4 +43,5 @@ if __name__ == '__main__':
               [0, 1, 0],
               [3, 5, 1]]
     # print(dot(line, square))
-    print(translate((7, 5), (3, -4)))
+    t = translate2d((7, 5), (3, -4))
+    print(t[:-1])
