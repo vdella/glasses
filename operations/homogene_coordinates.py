@@ -2,7 +2,7 @@ import numpy as np
 from math import sin, cos
 
 
-def scale_factor(point2d: tuple):
+def _scale_factor(point2d: tuple):
     """Adapts a 2D point for a 3D environment in order
     to multiply 3x3 matrices for translation, rotation and
     scaling."""
@@ -10,7 +10,7 @@ def scale_factor(point2d: tuple):
 
 
 def translate(point2d: tuple, distance: tuple):
-    scaled_point = scale_factor(point2d)
+    scaled_point = _scale_factor(point2d)
     dx, dy = distance
     return dot(scaled_point, [[1, 0, 0],
                               [0, 1, 0],
@@ -18,7 +18,7 @@ def translate(point2d: tuple, distance: tuple):
 
 
 def scale(point2d: tuple, delta: tuple):
-    scaled_point = scale_factor(point2d)
+    scaled_point = _scale_factor(point2d)
     sx, sy = delta
     return dot(scaled_point, [[sx, 0, 0],
                               [0, sy, 0],
@@ -26,7 +26,7 @@ def scale(point2d: tuple, delta: tuple):
 
 
 def rotate(point2d, angle):
-    scaled_point = scale_factor(point2d)
+    scaled_point = _scale_factor(point2d)
     return dot(scaled_point, [[cos(angle), - sin(angle), 0],
                               [sin(angle), cos(angle), 0],
                               [0, 0, 1]])
