@@ -1,5 +1,6 @@
 import tkinter as tk
 from structures.globals import structure_cache
+from structures.geometric_structures import Structure
 
 
 class CreatedObjectsFrame:
@@ -20,15 +21,7 @@ class CreatedObjectsFrame:
         self.text.delete('1.0', tk.END)
 
         for p in structure_cache:
-            points = p.points
-            coordinate_str: str = str(points)
-            if len(points) == 2:
-                structure = 'Line'
-            elif len(points) > 2:
-                structure = 'Polygon'
-            else:
-                coordinate_str = str(points).replace(',)', ')')
-                structure = 'Point'
-            self.text.insert(tk.INSERT, '{} : {}\n'.format(structure, coordinate_str))
+            p: Structure
+            self.text.insert(tk.INSERT, '{}\n'.format(str(p)))
 
         self.text['state'] = tk.DISABLED
