@@ -30,6 +30,7 @@ def scale2d(point2d: tuple, delta: tuple):
 
 def rotate2d(point2d, angle):
     scaled_point = _scale_factor(point2d)
+    angle = angle[0]
     result = dot(scaled_point, [[cos(angle), - sin(angle), 0],
                                 [sin(angle), cos(angle), 0],
                                 [0, 0, 1]])
