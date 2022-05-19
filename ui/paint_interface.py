@@ -9,13 +9,13 @@ def paint_graph(graph: dict, canvas):
         paint(x1, y1, x2, y2, canvas)
 
 
-def viewport_x(canvas):
+def draw_horizontal(canvas):
     x1, y1 = viewport_transformation((0, -3000))
     x2, y2 = viewport_transformation((0, 3000))
     canvas.create_line(x1, y1, x2, y2, fill='blue', width=5, dash=True)
 
 
-def viewport_y(canvas):
+def draw_vertical(canvas):
     x1, y1 = viewport_transformation((-3000, 0))
     x2, y2 = viewport_transformation((3000, 0))
     canvas.create_line(x1, y1, x2, y2, fill='orange', width=5, dash=True, dashoffset=5)
