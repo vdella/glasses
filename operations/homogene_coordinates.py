@@ -12,24 +12,28 @@ def _scale_factor(point2d: tuple):
 def translate2d(point2d: tuple, distance: tuple):
     scaled_point = _scale_factor(point2d)
     dx, dy = distance
-    return dot(scaled_point, [[1, 0, 0],
-                              [0, 1, 0],
-                              [dx, dy, 1]])
+    result = dot(scaled_point, [[1, 0, 0],
+                                [0, 1, 0],
+                                [dx, dy, 1]])
+
+    return result[0], result[1]
 
 
 def scale2d(point2d: tuple, delta: tuple):
     scaled_point = _scale_factor(point2d)
     sx, sy = delta
-    return dot(scaled_point, [[sx, 0, 0],
-                              [0, sy, 0],
-                              [0, 0, 1]])
+    result = dot(scaled_point, [[sx, 0, 0],
+                                [0, sy, 0],
+                                [0, 0, 1]])
+    return result[0], result[1]
 
 
 def rotate2d(point2d, angle):
     scaled_point = _scale_factor(point2d)
-    return dot(scaled_point, [[cos(angle), - sin(angle), 0],
-                              [sin(angle), cos(angle), 0],
-                              [0, 0, 1]])
+    result = dot(scaled_point, [[cos(angle), - sin(angle), 0],
+                                [sin(angle), cos(angle), 0],
+                                [0, 0, 1]])
+    return result[0], result[1]
 
 
 def dot(line_matrix, squared_matrix):
