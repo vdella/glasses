@@ -11,7 +11,7 @@ class CreatedObjectsFrame:
         self.frame.pack()
         self.text.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 
-    def show_coordinates(self):
+    def show_structures(self):
         """Deletes textbox content
         and writes coordinates of all points.
         Needed in order to show newly added coordinates."""

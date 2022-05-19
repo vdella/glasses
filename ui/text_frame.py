@@ -1,6 +1,8 @@
 import tkinter as tk
 from parsing.parser import Parser
 from ui.paint_interface import paint_graph
+from ui.paint_interface import draw_horizontal, draw_vertical
+from parsing.cache_interface import graphs
 
 
 class TextFrame:
@@ -8,21 +10,29 @@ class TextFrame:
     def __init__(self, mainframe, canvas, created_objs_frame):
         self.frame = tk.Text(mainframe, bg='#eeeee4', highlightcolor='#10435b', foreground='#010406')
         self.frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        self.canvas = canvas
+        self.canvas: tk.Canvas = canvas
         self.created_objs_frame = created_objs_frame
-        self.button = tk.Button(self.frame, text='Enter', width=10, height=1, command=self.parse,
+        self.button = tk.Button(self.frame, text='Enter', width=10, height=1, command=self.eat,
                                 background='#010406', foreground='#eeeee4')
         self.button.pack(side=tk.BOTTOM)
 
-    def parse(self):
+    def eat(self) -> list:
         """Sends the read user input to be properly parsed inside
         the parsing module and deletes what was written in the text box."""
         parser = Parser()
-        parser.cache = self.frame.get('1.0', 'end-1c').split('\n')
-        graphs = parser.parse()
+        entries = self.frame.get('1.0', 'end-1c').split('\n')
+        parser.parse(entries)
 
-        for graph in graphs:
+        self.canvas.delete('all')
+        draw_horizontal(self.canvas)
+        draw_vertical(self.canvas)
+
+        structures = graphs()
+
+        for graph in structures:
             paint_graph(graph, self.canvas)
 
-        self.created_objs_frame.show_coordinates()
+        self.created_objs_frame.show_structures()
         self.frame.delete('1.0', 'end-1c')
+
+        return parser.parse(entries)
