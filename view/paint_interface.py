@@ -1,5 +1,5 @@
-from operations.paint import paint
-from operations.viewport import viewport_transformation
+from view.paint import paint
+from model.window.viewport import viewport_transformation
 
 
 def paint_graph(graph: dict, canvas):

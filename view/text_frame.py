@@ -1,8 +1,8 @@
 import tkinter as tk
-from parsing.parser import Parser
-from ui.paint_interface import paint_graph
-from ui.paint_interface import draw_horizontal, draw_vertical
-from parsing.cache_interface import graphs
+from controller.parsing.text import Parser
+from view.paint_interface import paint_graph
+from view.paint_interface import draw_horizontal, draw_vertical
+from controller.parsing.cache_interface import graphs
 
 
 class TextFrame:
@@ -19,9 +19,8 @@ class TextFrame:
     def eat(self) -> list:
         """Sends the read user input to be properly parsed inside
         the parsing module and deletes what was written in the text box."""
-        parser = Parser()
         entries = self.frame.get('1.0', 'end-1c').split('\n')
-        parser.parse(entries)
+        Parser.parse(entries)  # TODO refactor method.
 
         self.canvas.delete('all')
         draw_horizontal(self.canvas)
@@ -30,9 +29,10 @@ class TextFrame:
         structures = graphs()
 
         for graph in structures:
+            print('A')
             paint_graph(graph, self.canvas)
 
         self.created_objs_frame.show_structures()
         self.frame.delete('1.0', 'end-1c')
 
-        return parser.parse(entries)
+        return Parser.parse(entries)

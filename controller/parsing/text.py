@@ -1,13 +1,13 @@
-from parsing.cache_interface import module_functions
+from controller.parsing.cache_interface import module_functions
 
 
 class Parser:
 
-    def parse(self, entries) -> ():
+    @staticmethod
+    def parse(entries) -> ():
         """Digests user input and draws a graph according
         to given coordinates."""
-
-        digest_cached = self._digest(entries)
+        digest_cached = Parser._digest(entries)
 
         for line in digest_cached:
             operation = line[0]
@@ -20,7 +20,7 @@ class Parser:
         """Digests a line of user input into
         individual parts, separated by blank spaces."""
 
-        for i in range(len(entries)):
+        for i, _ in enumerate(entries):
             cache_entry = entries[i].split()
             entries[i] = cache_entry
         return entries

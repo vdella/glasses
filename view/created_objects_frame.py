@@ -1,6 +1,6 @@
 import tkinter as tk
-from structures.globals import structure_cache
-from structures.geometric_structures import Structure
+from model.structures.ledger import StructureLedger
+from model.structures.geometric_structures import Structure
 
 
 class CreatedObjectsFrame:
@@ -20,7 +20,7 @@ class CreatedObjectsFrame:
 
         self.text.delete('1.0', tk.END)
 
-        for p in structure_cache:
+        for p in StructureLedger().elements:
             p: Structure
             self.text.insert(tk.INSERT, '{}\n'.format(str(p)))
 
