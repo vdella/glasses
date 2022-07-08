@@ -1,10 +1,11 @@
 from tkinter import *
-from ui.canvas_frame import CanvasFrame
-from ui.text_frame import TextFrame
-from ui.created_objects_frame import CreatedObjectsFrame
-from ui.side_frame import SideFrame
-from ui.root_window import root
-from ui.paint_interface import draw_horizontal, draw_vertical
+from view.canvas_frame import CanvasFrame
+from view.text_frame import TextFrame
+from view.created_objects_frame import CreatedObjectsFrame
+from view.side_frame import SideFrame
+from view.root_window import root
+from view.paint_interface import draw_horizontal, draw_vertical
+from view.menu import FileMenu
 
 
 class Application:
@@ -19,6 +20,8 @@ class Application:
         self.canvas_frame.canvas['width'] = self.width / 2
         self.canvas_frame.canvas['height'] = self.height
 
+        self.file_menu = FileMenu(self.root, self.canvas_frame.canvas)
+
         draw_horizontal(self.canvas_frame.canvas)
         draw_vertical(self.canvas_frame.canvas)
 
@@ -28,3 +31,7 @@ class Application:
         self.text_frame.created_objs_frame = self.object_frame
 
         self.root.mainloop()
+
+
+if __name__ == '__main__':
+    Application()
