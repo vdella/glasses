@@ -85,4 +85,4 @@ class FileMenu:
         Parser.parse([add_instruction])
 
         for graph in graphs():
-            paint_graph(graph, self.canvas_frame.canvas_frame)
+            paint_graph(graph, self.canvas_frame.canvas)
