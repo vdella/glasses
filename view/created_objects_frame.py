@@ -1,13 +1,14 @@
 import tkinter as tk
 from model.structures.ledger import StructureLedger
 from model.structures.geometric_structures import Structure
+from constants import X_MAX, Y_MAX
 
 
 class CreatedObjectsFrame:
 
     def __init__(self, mainframe):
         self.frame = tk.Frame(mainframe)
-        self.text = tk.Text(self.frame, state=tk.DISABLED, bg='#010406', fg='#eeeee4')
+        self.text = tk.Text(self.frame, state=tk.DISABLED, bg='black', fg='white', width=X_MAX, height=Y_MAX)
         self.frame.pack()
         self.text.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 
