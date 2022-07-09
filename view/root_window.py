@@ -1,10 +1,16 @@
 from tkinter import *
+from constants import X_MAX, Y_MAX
 
 
 def create_root():
     root_window = Tk()
     root_window.title('Glasses')
-    root_window.geometry("{}x{}".format(root_window.winfo_screenwidth(), root_window.winfo_screenheight()))
+
+    width, height = X_MAX, Y_MAX
+
+    root_window.minsize(width, height)
+    root_window.maxsize(width, height)
+
     return root_window
 
 

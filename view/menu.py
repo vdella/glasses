@@ -19,13 +19,22 @@ class FileMenu:
 
         self.file_menu = Menu(self.menu, tearoff=False)
         self.file_menu.add_command(
-            label='Open .obj file',
+            label='Open',
             command=self.add_vertices_to_cache
         )
 
         self.menu.add_cascade(
             label='File',
             menu=self.file_menu
+        )
+
+        self.operations_menu = Menu(self.menu, tearoff=False)
+        self.operations_menu.add_command(label='Prompt')
+        self.operations_menu.add_command(label='Created structures')
+
+        self.menu.add_cascade(
+            label='Operations',
+            menu=self.operations_menu
         )
 
     def obj_vertices(self):
@@ -41,6 +50,5 @@ class FileMenu:
         Parser.parse([add_instruction])
 
         for graph in graphs():
-            print('A')
             paint_graph(graph, self.canvas)
 
