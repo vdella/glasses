@@ -35,7 +35,6 @@ class Prompt:
         structures = graphs()
 
         for graph in structures:
-            print('A')
             paint_graph(graph, self.canvas_frame.canvas)
 
         self.created_objs_frame.show_structures()
