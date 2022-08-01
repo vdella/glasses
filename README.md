@@ -4,6 +4,8 @@ A PaintBrush-like desktop application for building objects in
 
 ## What's to install?
 
+You will need [Python3.10](https://computingforgeeks.com/how-to-install-python-on-ubuntu-linux-system/) and its Tkinter
+bundle package.
 Although Tkinter is Python's standard GUI lib,
 it has to be installed apart from the language.
 To obtain Tkinter, you must use
@@ -14,6 +16,10 @@ After the installation, you may execute the code
 from the `main` module.
 
 ## How to use it?
+
+In order to run the project, type
+
+`python3.10 app.py`
 
 ![App in execution](images/app.png)
 
